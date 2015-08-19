@@ -1,0 +1,163 @@
+author = "Kingsley";
+OnLoadName = "WARSIM";
+OnLoadMission = "Experience a persistent world with progressive military careers. Go on deployment with your friends, get promoted through the ranks, train to be specialist roles and lots more!";
+loadScreen = "splash.paa";
+disabledAI = 1;
+
+respawn = "BASE";
+respawnDelay = 20;
+respawnOnStart = -1;
+respawnTemplatesWest[] = {"MenuPosition","Revive"};
+
+reviveDelay = 10;
+reviveForceRespawnDelay = 5;
+reviveBleedOutDelay = 90;
+
+corpseManagerMode = 3;
+corpseLimit = 1;
+corpseRemovalMinTime = 60;
+corpseRemovalMaxTime = 300;
+
+wreckManagerMode = 3;
+wreckLimit = 1;
+wreckRemovalMinTime = 60;
+wreckRemovalMaxTime = 300;
+
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 60;
+};
+
+class CfgUnitInsignia
+{
+	class WSLogo
+	{
+		displayName = "WARSIM Logo";
+		author = "Kingsley";
+		texture = "logo.paa";
+		textureVehicle = "";
+	};
+};
+
+#include "CHVD\dialog.hpp"
+#include "ui\defines.hpp"
+#include "ui\menu\dialog.hpp"
+#include "ui\cas\dialog.hpp"
+#include "ui\ls\dialog.hpp"
+#include "ui\progression\dialog.hpp"
+#include "ui\op\dialog.hpp"
+#include "ui\jobs\dialog_n.hpp"
+#include "ui\jobs\dialog_s.hpp"
+#include "ui\armory\dialog.hpp"
+#include "builder\options\dialog.hpp"
+
+class CfgFunctions {
+	#include "CHVD\CfgFunctions.hpp"
+};
+
+class CfgSounds
+{
+	sounds[] = {};
+	class WS_SND_Promoted
+	{
+		name = "WS_SND_Promoted";
+		sound[] = {"snd\ws_snd_promoted.ogg", 1, 1};
+		titles[] = {0, ""};
+	};
+	class WS_SND_FobIntro
+	{
+		name = "WS_SND_FobIntro";
+		sound[] = {"snd\ws_snd_fobintro.ogg", 3, 1};
+		titles[] = {0, ""};
+	};
+};
+
+class Params
+{
+	class WS_CFG_param_showDebug
+	{
+		title = "Debug Messages";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class WS_CFG_param_fatigue
+	{
+		title = "Player Fatigue";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class WS_CFG_param_saveInterval
+	{
+		title = "Save Interval";
+		values[] = {5,10,15,30,45,60};
+		texts[] = {"5 Seconds","10 Seconds","15 Seconds","30 Seconds","45 Seconds","60 Seconds"};
+		default = 10;
+	};
+	class WS_CFG_param_rallyPointDelay
+	{
+		title = "Rally Point Deploy Delay";
+		values[] = {5,10,15,30,45,60};
+		texts[] = {"5 Seconds","10 Seconds","15 Seconds","30 Seconds","45 Seconds","60 Seconds"};
+		default = 10;
+	};
+	class WS_CFG_param_zonePrecision
+	{
+		title = "Zone Precision";
+		values[] = {5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100};
+		texts[] = {"5","10","15","20","25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100"};
+		default = 10;
+	};
+	class WS_CFG_param_maxZoneCount
+	{
+		title = "Maximum Zone Count";
+		values[] = {5,10,15,20,25,30};
+		texts[] = {"5","10","15","20","25","30"};
+		default = 10;
+	};
+	class WS_CFG_param_minDistZone
+	{
+		title = "Minimum Distance Between Zones";
+		values[] = {250,500,750,1000,1250,1500,1750,2000};
+		texts[] = {"250 Meters","500 Meters","750 Meters","1000 Meters","1250 Meters","1500 Meters","1750 Meters","2000 Meters"};
+		default = 500;
+	};
+	class WS_CFG_param_maxZoneRadius
+	{
+		title = "Maximum Zone Radius";
+		values[] = {250,500,750,1000,1250,1500};
+		texts[] = {"250 Meters","500 Meters","750 Meters","1000 Meters","1250 Meters","1500 Meters"};
+		default = 500;
+	};
+	class WS_CFG_param_zoneScanRadius
+	{
+		title = "Zone Scan Radius";
+		values[] = {1000,1500,2000,2500,3000,3500,4000};
+		texts[] = {"1000 Meters","1500 Meters","2000 Meters","2500 Meters","3000 Meters","3500 Meters","4000 Meters"};
+		default = 2500;
+	};
+	class WS_CFG_param_vehDelay
+	{
+		title = "Vehicle Respawn Delay";
+		values[] = {15,30,60,300,600,900,1800,3600};
+		texts[] = {"15 Seconds","30 Seconds","1 Minute","5 Minutes","10 Minutes","15 Minutes","30 Minutes","60 Minutes"};
+		default = 15;
+	};
+	class WS_CFG_param_vehDesertDelay
+	{
+		title = "Deserted Vehicle Respawn Delay";
+		values[] = {15,30,60,300,600,900,1800,3600};
+		texts[] = {"15 Seconds","30 Seconds","1 Minute","5 Minutes","10 Minutes","15 Minutes","30 Minutes","60 Minutes"};
+		default = 15;
+	};
+	class WS_CFG_param_timeZone
+	{
+		title = "Timezone";
+		values[] = {-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"GMT-10","GMT-9","GMT-8","GMT-7","GMT-6","GMT-5","GMT-4","GMT-3","GMT-2","GMT-1","GMT","GMT+1","GMT+2","GMT+3","GMT+4","GMT+5","GMT+6","GMT+7","GMT+8","GMT+9","GMT+10"};
+		default = -5;
+	};
+};

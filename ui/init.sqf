@@ -1,0 +1,12 @@
+ui_jobsInit = compile preprocessFileLineNumbers 'ui\jobs\init.sqf';
+ui_armoryInit = compile preprocessFileLineNumbers 'ui\armory\init.sqf';
+ui_pageChange = compile preprocessFileLineNumbers 'ui\armory\ui_pageChange.sqf';
+ui_selectItem = compile preprocessFileLineNumbers 'ui\armory\ui_selectItem.sqf';
+ui_selectAttachment = compile preprocessFileLineNumbers 'ui\armory\ui_selectAttachment.sqf';
+ui_clickMap = compile preprocessFileLineNumbers 'ui\cas\ui_clickMap.sqf';
+ui_ls_clickMap = compile preprocessFileLineNumbers 'ui\ls\ui_clickMap.sqf';
+ui_casInit = compile preprocessFileLineNumbers 'ui\cas\init.sqf';
+ui_lsInit = compile preprocessFileLineNumbers 'ui\ls\init.sqf';
+ui_confirmRequest = compile preprocessFileLineNumbers 'ui\cas\ui_confirmRequest.sqf';
+ui_broadcastRequest = compile preprocessFileLineNumbers 'ui\cas\ui_broadcastRequest.sqf';
+ui_cancelGlobalRequest = compile preprocessFileLineNumbers 'ui\cas\ui_cancelGlobalRequest.sqf';
